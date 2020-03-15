@@ -6,27 +6,27 @@ class Show < ActiveRecord::Base
     
  end
 
- def most_popular_show
+ def self.most_popular_show
    Show.order(rating: :desc).first
  end
   
-  def lowest_rating
+  def self.lowest_rating
     Show.minimum("rating")
   end
  
-  def least_popular_show
+  def self.least_popular_show
     Show.order(rating: :asc).first
   end
  
-  def ratings_sum
+  def self.ratings_sum
     Show.sum(:rating)
   end
  
-   def popular_shows
+   def self.popular_shows
      Show.where("rating > ?", 5)
    end
  
-   def shows_by_alphabetical_order
+   def self.shows_by_alphabetical_order
      Show.order(name: :asc)
    end
 
